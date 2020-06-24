@@ -8,8 +8,8 @@ const io_client = require('socket.io-client');
 const io = io_client.connect('http://192.168.100.13:3000');
 const app = express();
 
-const server = app.listen(3000,function(){
-    console.log('Kafka consumer running at 3000')
+const server = app.listen(4000,function(){
+    console.log('Kafka consumer running at 4000')
 })
 
 // Start from latest offset.

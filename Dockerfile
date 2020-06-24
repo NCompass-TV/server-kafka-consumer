@@ -12,6 +12,6 @@ RUN npm install
 # Add the rest of the sources
 ADD . /app
 
-EXPOSE 3000
+EXPOSE 4000
 
 CMD ["npm","start"]
