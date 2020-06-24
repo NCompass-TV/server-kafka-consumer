@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node consumer.js",
     "dev": "nodemon consumer.js"
   },
   "keywords": [],

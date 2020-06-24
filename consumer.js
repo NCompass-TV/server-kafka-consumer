@@ -5,7 +5,7 @@ var Consumer = kafka.Consumer;
 const client = new kafka.KafkaClient({kafkaHost: 'staging.n-compass.online:9092'});
 var offset = new kafka.Offset(client);
 const io_client = require('socket.io-client');
-const io = io_client.connect('http://staging.n-compass.online:3000');
+const io = io_client.connect('http://staging.n-compass.online:73');
 const app = express();
 
 const server = app.listen(5001,function(){
@@ -56,6 +56,6 @@ const sendLogs = (data) => {
     })
 }
 
-app.get('/', (req, res) => {
+app.get('/ping', (req, res) => {
     res.send('Consumer is up')
 })
