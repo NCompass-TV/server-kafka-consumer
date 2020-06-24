@@ -4,8 +4,8 @@
   "description": "",
   "main": "consumer.js",
   "scripts": {
-    "dev": "nodemon consumer.js",
-    "start": "node consumer.js"
+    "start": "node consumer.js",
+    "dev": "nodemon consumer.js"
   },
   "keywords": [],
   "author": "",
