@@ -1,5 +1,5 @@
 #Latest version of node tested on.
-FROM node:8-alpine
+FROM node:12-alpine
 
 WORKDIR /app
 
