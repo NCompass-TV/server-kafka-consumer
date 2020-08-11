@@ -9,8 +9,9 @@ const io_client = require('socket.io-client');
 const io = io_client.connect(process.env.SOCKET);
 const API = process.env.API;
 const app = express();
+const PORT = process.env.PORT;
 
-app.listen(process.env.PORT, function(){
+app.listen(PORT, function(){
     console.log(`Kafka consumer running at port ${PORT}`)
 })
 
