@@ -1,15 +1,17 @@
+require('dotenv').config();
 const axios = require('axios');
 const express = require('express');
 const kafka = require('kafka-node');
 var Consumer = kafka.Consumer;
-const client = new kafka.KafkaClient({kafkaHost: 'staging.n-compass.online:9092'});
+const client = new kafka.KafkaClient({kafkaHost: process.env.KAFKA});
 var offset = new kafka.Offset(client);
 const io_client = require('socket.io-client');
-const io = io_client.connect('http://staging.n-compass.online:83');
+const io = io_client.connect(process.env.SOCKET);
+const API = process.env.API;
 const app = express();
 
-const server = app.listen(5001,function(){
-    console.log('Kafka consumer running at 5001')
+app.listen(process.env.PORT, function(){
+    console.log(`Kafka consumer running at port ${PORT}`)
 })
 
 // Start from latest offset.
@@ -35,9 +37,8 @@ offset.fetch(
                     logDate: log_data.timestap
                 }];
 
-                const send_logs = await sendLogs(play_log);
+                await sendLogs(play_log);
                 io.emit('CS_content_log', play_log);
-                console.log('Logs Sent:', log_data);
             } catch(err) {
                 console.log('Invalid Log Format', message.value, err);
             }
@@ -47,12 +48,13 @@ offset.fetch(
 
 const sendLogs = (data) => {
     return new Promise((resolve, reject) => {
-        axios.post(`http://3.212.225.229:82/api/ContentPlays/Log`, data)
+        axios.post(`${API}/api/ContentPlays/Log`, data)
         .then((res) => {
             resolve(res.status)
         }).catch((err) => {
             console.log('Error sending logs to API Server', err.response)
-        })
+			reject(err);
+		})
     })
 }
 
