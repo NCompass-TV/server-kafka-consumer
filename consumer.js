@@ -5,7 +5,7 @@ var Consumer = kafka.Consumer;
 const client = new kafka.KafkaClient({kafkaHost: 'staging.n-compass.online:9092'});
 var offset = new kafka.Offset(client);
 const io_client = require('socket.io-client');
-const io = io_client.connect('http://staging.n-compass.online:83');
+const io = io_client.connect('http://staging.n-compass.online:93');
 const app = express();
 
 const server = app.listen(5001,function(){
@@ -47,7 +47,7 @@ offset.fetch(
 
 const sendLogs = (data) => {
     return new Promise((resolve, reject) => {
-        axios.post(`http://3.212.225.229:82/api/ContentPlays/Log`, data)
+        axios.post(`http://3.212.225.229:92/api/ContentPlays/Log`, data)
         .then((res) => {
             resolve(res.status)
         }).catch((err) => {
