@@ -30,7 +30,7 @@ offset.fetch(
 
         consumer.on('message', async message => {
             try {
-				log_data = JSON.parse(message.value);
+		log_data = message.value;
 
                 let play_log = [{
                     licenseId: log_data.license_id,
