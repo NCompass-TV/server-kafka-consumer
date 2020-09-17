@@ -35,13 +35,14 @@ offset.fetch(
 
         consumer.on('message', async message => {
             try {
-                log_data = message.value;
+                log_data = JSON.parse(message.value);
 
                 let play_log = [{
                     licenseId: log_data.license_id,
                     contentId: log_data.content_id,
                     logDate: log_data.timestap
                 }];
+
                 const logs = await sendLogs(play_log);
                 io.emit('CS_content_log', play_log);
                 console.log('Logs Sent Successfully:', logs, play_log);
