@@ -14,7 +14,7 @@ const server = app.listen(5001,function(){
 
 // Start from latest offset.
 offset.fetch(
-    [{ topic: 'contentPlayCount', partition: 0, time: -1, maxNum: 1 }], (err, data) => {
+    [{ topic: 'contentPlayCount', partition: 1, time: -1, maxNum: 1 }], (err, data) => {
         let count = 0;
         var consumer = new Consumer(
             client,
