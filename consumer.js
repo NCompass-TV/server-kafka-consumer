@@ -14,11 +14,11 @@ const server = app.listen(5001,function(){
 
 // Start from latest offset.
 offset.fetch(
-    [{ topic: 'contentPlayCount', partition: 1, time: -1, maxNum: 1 }], (err, data) => {
+    [{ topic: 'contentPlayCount', partition: 2, time: -1, maxNum: 1 }], (err, data) => {
         let count = 0;
         var consumer = new Consumer(
             client,
-            [{topic: 'contentPlayCount', partition: 0, offset: data['contentPlayCount'][0][0]}],
+            [{topic: 'contentPlayCount', partition: 2, offset: data['contentPlayCount'][0][0]}],
             {
                 autoCommit: false,
                 fromOffset: true
