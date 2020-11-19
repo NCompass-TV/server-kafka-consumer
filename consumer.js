@@ -23,10 +23,10 @@ io.on('connect', () => {
 
 // Start from latest offset.
 offset.fetch(
-    [{ topic: 'contentPlayCount', partition: 1, time: -1, maxNum: 1 }], (err, data) => {
+    [{ topic: 'contentPlayCount', partition: 2, time: -1, maxNum: 1 }], (err, data) => {
         var consumer = new Consumer(
             client,
-            [{topic: 'contentPlayCount', partition: 1, offset: data['contentPlayCount'][1][0]}],
+            [{topic: 'contentPlayCount', partition: 2, offset: data['contentPlayCount'][2][0]}],
             {
                 autoCommit: false,
                 fromOffset: true
