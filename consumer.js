@@ -47,7 +47,7 @@ offset.fetch(
 
 const sendLogs = (data) => {
     return new Promise((resolve, reject) => {
-        axios.post(`http://3.212.225.229:72/api/ContentPlays/Log`, data)
+        axios.post(`http://testurl:port/api/ContentPlays/Log`, data)
         .then((res) => {
             resolve(res.status)
         }).catch((err) => {
